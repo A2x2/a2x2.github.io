@@ -1,0 +1,39 @@
+html {
+	background: #FFCF9A;
+	overflow: hidden;
+	font-family: "Segoe UI";
+	color: #000000;
+}
+
+.wrapper {
+	display: table-cell;
+  	vertical-align: middle;
+  	width: 100vw;
+  	height: 100vh;
+}
+
+table {
+	margin: 0 auto;
+	position: relative;
+	width: 48px;
+	height: 32px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: 3px solid white;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	background: #D89A91;
+	padding: 0;
+}
+
+td {
+	text-align: center;
+	padding: 0;
+	border: 0;
+}
+
+video {
+	height: 320px;
+	margin: 0;
+	margin-bottom: -4px;
+	padding: 0;
+}
