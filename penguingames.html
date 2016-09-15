@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>penguingames</title>
+	<meta charset="utf8">
+	<style type="text/css">
+		span {
+			font-family: monospace;
+		}
+
+		li {
+			line-height: 28px;
+		}
+	</style>
+</head>
+<body>
+	<h1>what even is this puzzle - <a href="http://astojkov01.wixsite.com/penguinglasses">start here</a></h1>
+	<h2>block 1</h2>
+	<p>the first block of text is <a href="https://www.base64decode.org/">base64</a> and decrypts to <a href="http://morsecode.scphillips.com/translator.html">morse</a>:
+	<p><span>-... .- -... -... .- .- .- -... -... -... .- .- .- .- .- -... .- .- -... -... / .- -... .- .- .- -... .- .- -... .- / .- .- .- .- .- / .- .- -... -... .- -... .- .- .- -... .- -... -... -... .- -... .- -... .- .- .- -... -... -... -... / .- -... -... -... .- .- .- -... .- -... / .- .- .- -... -... .- -... -... -... .- .- -... -... .- -... .- -... .- -... .- .- .- -... .- .- -... -... .- .- .- -... .- .- -... .- / .- .- .- -... .- .- .- .- .- .- .- -... .- -... -... .- -... .- -... -... .- .- -... .- .- .- .- .- -... -... / .- .- .- .- .- / -... .- -... -... -... -... .- -... -... -... -... .- -... -... -... -... .- -... -... -... / -... .- -... -... -... -... .- -... -... -... / -... .- -... -... -... -... .- -... -... -... -... .- -... -... -... -... .- -... -... -... -... .- -... -... -...</span>
+	<p>which translates to:
+	<p><span>BABBAAABBBAAAAABAABB ABAAABAABA AAAAA AABBABAAABABBBABABAAABBBB ABBBAAABAB AAABBABBBAABBABABABAAABAABBAAABAABA AAABAAAAAAABABBABABBAABAAAAABB AAAAA BABBBBABBBBABBBBABBB BABBBBABBB BABBBBABBBBABBBBABBBBABBB</span>
+	<p>using <a href="http://rumkin.com/tools/cipher/baconian.php">baconian cipher</a> we get:
+	<p><span>WHAT IS A GROUP OF DONKEYS CALLED A XXXX XX XXXXX</span>
+	<p>the answer is <b>PACE OF ASSES</b>
+	<p>(plus the string at the bottom - <span>V1ZoT2VtSkhWbnBqTWs1dldWaENlZz09</span> - decrypts to <span>asslesschaps</span> after using base64 thrice)
+	<hr />
+	<h2>block 2</h2>
+	<p>the snapchat logo is a hint towards the <a href="https://www.tools4noobs.com/online_tools/decrypt/">GOST (ghost) hashing algorithm</a>
+	<p>using GOST and the key <span>paceofasses</span> to decrypt the big block of base64 on the page gives:
+	<p><span>U2FsdGVkX18GSqTEutxbNHWYmgA8XHFXSEW1jmfEOMYLVJhjxHQaUANCrJwAuZYCXoJvuv1KP2F5G+LkVLbPfx5rASf/pfscblNTT+nTzKCZdiwrDXyXuH+GOlkNrIa8nnFYSbywVwi/6iI1L0Ohw9DzZ59E6OT+yyeU94Qt4HsE9753r3EIq7lf1Sh7F9ik6oL7ct40Jk3bFwdJitXm+FWcBdrsaOnEa3At/B0iCtIx4BXQUwbVO5pbDyvuHmvUDIVUaNwiHJF9cCZlXsf3Wla0S2fleHkEq/7CUdM9AGkBIYGJ6gP46CDrARuHbVLNvXE8tLixHIAHNl2TZ30/wYhrWV7vCJkaJmv3owYJGfpEJ88lNWnMUmyxDmyS051EQYUq2sDEoUf9thr0AFDk6QnEeUR+f2fY6Zwb65Z/WfxrTuFzP8hGZX4JtSizK2s/ewYExJP0MZMko/dQKLPsOWd1sPwRbDdSCznRQGbie74uP5vPIwiHufxqCse75JzA/4haUaoGOzC9oEW8SXiNKYS6SNAJzMqVHKZbumV/FI2GW/mcaXyQnCRhgYQHpFzcYhAiqeB4IaqFfh46xc+QszbGa6ET0N7gJIBOCyXvXPVbnjnYYgZ0gAdm49PoGaGVkUZjB6hqyTlZxSzbgcgGLlFd+S+NKdgzsBqz4UqpARElRqsOh8KLrqKF39I4Dz/AxOzJXd0YDYLRtZBwQQqS7Itf32RIk3PlsxWEcJdBwzyt30HgHgXFacKd5z3Qndu5F4ncu2MyHC1g2t74wvyBEYNkucp38iFWVO6DsQz3L0sYBFWLG98JtFOSs0lEaE8OCuNJRQRzSWmhGj4F+W1gt1rySryBi41bjMJ7m/Vy21r9ssb3YSZO
+	<br><br>I was making out with my girlfriend today, and I Twisterd my Tongue. ouch.
+	<br><br>What does sally do by the beach?</span>
+	<p>the key to the first block of text here (<a href="https://www.browserling.com/tools/rc4-decrypt">rc4</a>) is <span>shesellsseashells</span> (tongue twister), resulting in:
+	<p><span>Baaaaaaaaaaaaaaaaaaa Baaaaaaaaaaaaaaaaaaa black sheep, have you any wool? 
+	<br>yes sir, yes sir, three bags full 
+	<br>one for my master, rijndael-128 (how do you say that?)
+	<br>one for the dame, rijndael-192 (who can speak sheep!)
+	<br>one for dat little boi, rijndael-256 who lives down the lane. or the drive. or the alley. something about broken memes.
+	<br><br>BAABBAABBBAABAAABABAAABAABBAAABAABAAAAAABAAABAABAAABAAAABBAAABBBBABABBABAAAAABAAAAABblack sheep have you any wool
+	<br>yes sir, yes sir, 
+	<br>MyBiYWdzIGZ1bGw=
+	<br><br>K07PcCJumK2vFvbDVukHlvT/Hf93iuXTY5/+5OVr4Lw=
+	<br><br>ryOh6SRTiW0vjGr0jXg0pA9HszwPhTGs6vmNX1t2JwRG2o1r5L2dToznSeQ7VnQS
+	<br><br>0JubaW7JS0dLUAGN5YbaX35kPwa5zteGP5og4WFB62w=</span>
+	<ul>
+		<li><span>Baaaaaaaaaaaaaaaaaaa Baaaaaaaaaaaaaaaaaaa</span> → <b>QAAA QAAA</b> (baconian) 
+		<li><span>BAABBAABBBAABAAABABAAABAABBAAABAABAAAAAABAAABAABAAABAAAABBAAABBBBABABBABAAAAABAAAAABB</span> → <b>THEKEYSAREIMPLIED</b> (baconian)
+		<li><span>MyBiYWdzIGZ1bGw=</span> → <b>3 bags full</b> (base64) 
+		<li><span>K07PcCJumK2vFvbDVukHlvT/Hf93iuXTY5/+5OVr4Lw=</span> → <span>dGhlIG5leHQgcGFnZSBpcyBjY</span> (<a href="https://www.tools4noobs.com/online_tools/decrypt/">rijndael-128</a> using key <span>raindahl</span>) → <b>the next page is c</b> (base64)
+		<li><span>ryOh6SRTiW0vjGr0jXg0pA9HszwPhTGs6vmNX1t2JwRG2o1r5L2dToznSeQ7VnQS</span> → <b>WxsZWQgY0dsNmVtRndhWHA2WV=</b> (<a href="https://www.tools4noobs.com/online_tools/decrypt/">rijndael-192</a> using key <span>QAAA QAAA</span>)
+		<li><span>0JubaW7JS0dLUAGN5YbaX35kPwa5zteGP5og4WFB62w=</span> → <b>hCbGNIQmxjbTl1YVhCcGVucGg=</b> (<a href="https://www.tools4noobs.com/online_tools/decrypt/">rijndael-256</a> using key <span>boulevard</span>)
+	</ul>
+	<p>using the 3 bags full clue, we get <span>cWxsZWQgY0dsNmVtRndhWHA2WVhCbGNIQmxjbTl1YVhCcGVucGg=</span>, which is base64 for <span>qlled cGl6emFwaXp6YXBlcHBlcm9uaXBpenph</span>
+	<p><span>cGl6emFwaXp6YXBlcHBlcm9uaXBpenph</span> → <b>pizzapizzapepperonipizza</b> (base64) 
+</body>
+</html>
