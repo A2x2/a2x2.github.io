@@ -15,7 +15,7 @@
 		function decode() {
 			var i = document.getElementsByTagName('textarea')[0];
 			var o = document.getElementsByTagName('textarea')[1];
-			var iv = i.value.split('');
+			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
 			var a1 = "1234567890-/:;()$&@__.,?!' ".split('');
 			var a2 = "qwertyuiopasdfghjklzxcvbnm ".split('');
@@ -38,10 +38,10 @@
 		function encode() {
 			var i = document.getElementsByTagName('textarea')[1];
 			var o = document.getElementsByTagName('textarea')[0];
-			var iv = i.value.split('');
+			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
-			var a1 = "1234567890-/:;()$&@  .,?!'".split('');
-			var a2 = "qwertyuiopasdfghjklzxcvbnm".split('');
+			var a1 = "1234567890-/:;()$&@  .,?!' ".split('');
+			var a2 = "qwertyuiopasdfghjklzxcvbnm ".split('');
 
 			o.value = '';
 
@@ -51,7 +51,8 @@
 					ov.push(a1[ax]);
 				}
 				else {
-					ov.push(iv[x]);
+					ov = [];
+					alert('Invalid character "' + iv[x] + '" found: only letters and spaces allowed');
 				}				
 			}
 
