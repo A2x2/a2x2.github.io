@@ -12,15 +12,31 @@
 	</style>
 	<script type="text/javascript">
 		// bad code but i don't give a shit
-		function decode() {
-			var i = document.getElementsByTagName('textarea')[0];
-			var o = document.getElementsByTagName('textarea')[1];
+		function decode(mode) {
+			var i = document.getElementsByTagName('textarea')[0 + mode * 2];
+			var o = document.getElementsByTagName('textarea')[1 + mode * 2];
 			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
-			var a1 = "1234567890-/:;()$&@__.,?!'[]{}#%^*+=_\\|~<>€£¥• ".split('');
-			var a2 = "qwertyuiopasdfghjklzxcvbnm1234567890-/:;()$&@\" ".split('');
+			var a1 = "1234567890-/:;()$&@__.,?!' ".split('');
+			var a2 = "qwertyuiopasdfghjklzxcvbnm ".split('');
+			var a3 = "[]{}#%^*+=_\\|~<>€£¥• ".split('');
+ /*teehee*/ var a4 = "1234567890-/:;()$&@\" ".split('');
 
 			o.value = '';
+
+			if (mode == 1) {
+				var ov2 = [];
+				for (var x = 0; x < iv.length; x++) {
+				var ax = a3.indexOf(iv[x]);
+				if (ax != -1) {
+					ov2.push(a4[ax]);
+				}
+				else {
+					ov2.push(iv[x]);
+					}				
+				}
+				iv = ov2;
+			}
 
 			for (var x = 0; x < iv.length; x++) {
 				var ax = a1.indexOf(iv[x]);
@@ -35,13 +51,15 @@
 			o.value = ov.join('');
 		}
 
-		function encode() {
-			var i = document.getElementsByTagName('textarea')[1];
-			var o = document.getElementsByTagName('textarea')[0];
+		function encode(mode) {
+			var i = document.getElementsByTagName('textarea')[1 + mode * 2];
+			var o = document.getElementsByTagName('textarea')[0 + mode * 2];
 			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
 			var a1 = "1234567890-/:;()$&@__.,?!'[]{}#%^*+=_\\|~<>€£¥• ".split('');
 			var a2 = "qwertyuiopasdfghjklzxcvbnm1234567890-/:;()$&@\" ".split('');
+			var a3 = "[]{}#%^*+=_\\|~<>€£¥• ".split('');
+ /*teehee*/ var a4 = "1234567890-/:;()$&@\" ".split('');
 
 			o.value = '';
 
@@ -57,6 +75,21 @@
 				}				
 			}
 
+			if (mode == 1) {
+				var ov2 = [];
+				for (var x = 0; x < ov.length; x++) {
+				var ax = a4.indexOf(ov[x]);
+				if (ax != -1) {
+					ov2.push(a3[ax]);
+				}
+				else {
+					ov2.push(iv[x]);
+					}				
+				}
+				ov = ov2;
+				console.log(ov);
+			}
+
 			o.value = ov.join('');
 		}
 	</script>
@@ -65,9 +98,17 @@
 	<h1>:3.4605 '3</h1>
 	<p>Encrypted String:
 	<p><textarea id="input"></textarea>
-	<p><button onclick="decode()">Decode</button>
+	<p><button onclick="decode(0)">Decode</button>
 	<p>Plaintext:
 	<p><textarea id="output"></textarea>
-	<p><button onclick="encode()">Encode</button>
+	<p><button onclick="encode(0)">Encode</button>
+	<hr />
+	<h1>>{¥¥+ ]+}¥|</h1>
+	<p>Encrypted String:
+	<p><textarea id="input"></textarea>
+	<p><button onclick="decode(1)">Decode</button>
+	<p>Plaintext:
+	<p><textarea id="output"></textarea>
+	<p><button onclick="encode(1)">Encode</button>
 </body>
 </html>
