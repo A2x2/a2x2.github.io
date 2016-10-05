@@ -17,29 +17,14 @@
 			var o = document.getElementsByTagName('textarea')[1 + mode * 2];
 			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
-			var a1 = "1234567890-/:;()$&@__.,?!' ".split('');
-			var a2 = "qwertyuiopasdfghjklzxcvbnm ".split('');
-			var a3 = "[]{}#%^*+=_\\|~<>€£¥• ".split('');
- /*teehee*/ var a4 = "1234567890-/:;()$&@\" ".split('');
+			var a1 = ["1234567890-/:;()$&@zx.,?!' ".split(''),
+					  "[]{}#%^*+=_\\|~<>€£¥zx.,?!' ".split('')];
+			var a2 =  "qwertyuiopasdfghjklzxcvbnm ".split('');
 
 			o.value = '';
 
-			if (mode == 1) {
-				var ov2 = [];
-				for (var x = 0; x < iv.length; x++) {
-				var ax = a3.indexOf(iv[x]);
-				if (ax != -1) {
-					ov2.push(a4[ax]);
-				}
-				else {
-					ov2.push(iv[x]);
-					}				
-				}
-				iv = ov2;
-			}
-
 			for (var x = 0; x < iv.length; x++) {
-				var ax = a1.indexOf(iv[x]);
+				var ax = a1[mode].indexOf(iv[x]);
 				if (ax != -1) {
 					ov.push(a2[ax]);
 				}
@@ -56,37 +41,22 @@
 			var o = document.getElementsByTagName('textarea')[0 + mode * 2];
 			var iv = i.value.toLowerCase().split('');
 			var	ov = [];
-			var a1 = "1234567890-/:;()$&@__.,?!' ".split('');
-			var a2 = "qwertyuiopasdfghjklzxcvbnm ".split('');
-			var a3 = "[]{}#%^*+=_\\|~<>€£¥• ".split('');
- /*teehee*/ var a4 = "1234567890-/:;()$&@\" ".split('');
+			var a1 = ["1234567890-/:;()$&@zx.,?!' ".split(''),
+					  "[]{}#%^*+=_\\|~<>€£¥zx.,?!' ".split('')];
+			var a2 =  "qwertyuiopasdfghjklzxcvbnm ".split('');
 
 			o.value = '';
 
 			for (var x = 0; x < iv.length; x++) {
 				var ax = a2.indexOf(iv[x]);
 				if (ax != -1) {
-					ov.push(a1[ax]);
+					ov.push(a1[mode][ax]);
 				}
 				else {
 					ov = [];
 					alert('Invalid character "' + iv[x] + '" found: only letters and spaces allowed');
 					break;
 				}				
-			}
-
-			if (mode == 1) {
-				var ov2 = [];
-				for (var x = 0; x < ov.length; x++) {
-				var ax = a4.indexOf(ov[x]);
-				if (ax != -1) {
-					ov2.push(a3[ax]);
-				}
-				else {
-					ov2.push(ov[x]);
-					}				
-				}
-				ov = ov2;
 			}
 
 			o.value = ov.join('');
