@@ -29,7 +29,6 @@ function generateBossData(data, key) {
 	} else {
 		td[4].setAttribute('title', 'Physical attack');
 	}
-	//td[5].innerHTML = data.drops.join('<br>');
 	td[5].innerHTML = data.respawn > 0 ? (data.respawn / 60).toString() + ' min' : "None";
 	var mt = document.createElement('code');
 	mt.innerHTML = key;
