@@ -1,0 +1,144 @@
+{
+  "phoenix": {
+    "aa": 1,
+    "hit": "explode_a",
+    "gold": 12000,
+    "hp": 120000,
+    "frequency": 1.2,
+    "damage_type": "magical",
+    "xp": 80000,
+    "speed": 50,
+    "name": "Phoenix",
+    "respawn": 180,
+    "range": 120,
+    "attack": 175,
+    "aggro": 0.2,
+    "drops": [
+        "Stat Earrings"
+    ]
+  },
+  "mvampire": {
+    "hit": "explode_c",
+    "gold": 32000,
+    "hp": 240000,
+    "frequency": 1.2,
+    "damage_type": "magical",
+    "xp": 200000,
+    "speed": 40,
+    "name": "Dracul",
+    "respawn": 1080,
+    "range": 120,
+    "attack": 245,
+    "aggro": 0.05,
+    "drops": [
+        "Dracul's Cape",
+        "Stat Earrings"
+    ]
+  },
+  "fvampire": {
+    "hit": "explode_c",
+    "gold": 36000,
+    "hp": 240000,
+    "frequency": 1.2,
+    "damage_type": "magical",
+    "xp": 300000,
+    "speed": 40,
+    "name": "Ms. Dracul",
+    "respawn": 1440,
+    "range": 120,
+    "attack": 275,
+    "aggro": 0.05,
+    "drops": [
+        "Dracul's Cape",
+        "Stat Earrings"
+    ]
+  },
+  "mrpumpkin": {
+    "hit": "explode_c",
+    "gold": 36000,
+    "hp": 120000,
+    "frequency": 1,
+    "damage_type": "magical",
+    "xp": 240000,
+    "speed": 40,
+    "name": "Mr. Pumpkin",
+    "respawn": 1440,
+    "range": 120,
+    "attack": 1200,
+    "aggro": 0.05,
+    "drops": [
+        "Pumpkin Hat",
+        "Rare Candy"
+    ]
+  },
+  "skeletor": {
+    "gold": 20000,
+    "hp": 80000,
+    "frequency": 1.2,
+    "damage_type": "physical",
+    "xp": 120000,
+    "speed": 40,
+    "name": "Skeletor",
+    "respawn": 720,
+    "range": 80,
+    "attack": 1800,
+    "aggro": 0.2,
+    "drops": [
+        "Unknown"
+    ]
+  },  
+  "redfairy": {
+    "aa": 1,
+    "hit": "explode_c",
+    "gold": 1000000,
+    "hp": 4800000,
+    "frequency": 100,
+    "damage_type": "magical",
+    "xp": 2000000,
+    "speed": 10,
+    "name": "Fairy",
+    "respawn": 0,
+    "range": 999999,
+    "attack": 4000,
+    "aggro": 0,
+    "drops": [
+        "Unknown"
+    ]
+  },
+  "bluefairy": {
+    "aa": 1,
+    "hit": "explode_c",
+    "gold": 1000000,
+    "hp": 4000000,
+    "frequency": 100,
+    "damage_type": "magical",
+    "xp": 2000000,
+    "speed": 10,
+    "name": "Fairy",
+    "respawn": 0,
+    "range": 999999,
+    "attack": 2400,
+    "aggro": 0,
+    "drops": [
+        "Unknown"
+    ]
+  },
+  "greenfairy": {
+    "aa": 1,
+    "hit": "explode_c",
+    "gold": 1000000,
+    "hp": 3600000,
+    "frequency": 100,
+    "damage_type": "magical",
+    "xp": 2000000,
+    "speed": 10,
+    "name": "Fairy",
+    "respawn": 0,
+    "range": 999999,
+    "attack": 3000,
+    "aggro": 0,
+    "drops": [
+        "Unknown"
+    ]
+  }
+}
