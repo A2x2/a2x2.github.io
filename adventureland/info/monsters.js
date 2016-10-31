@@ -18,7 +18,7 @@ function generateMonsterData(data, key) {
 	sprite.className = 'sprite';
 	sprite.setAttribute('src', 'images/monsters/' + key + '.png');
 	sprite.setAttribute('onclick', 'alert(JSON.stringify(' + JSON.stringify(data, null, 4) + ', null, 4))');
-	sprite.setAttribute('title', 'Click me for full boss data!');
+	sprite.setAttribute('title', 'Click me for full monster data!');
 	td[1].appendChild(sprite);
 	td[2].innerHTML = data.hp;
 	td[3].innerHTML = data.xp;
