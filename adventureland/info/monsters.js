@@ -1,4 +1,4 @@
-$.getJSON("monsters.json", function(json) {
+$.getJSON("monsters_new.json", function(json) {
     for (key in json) {
     	if (!json.hasOwnProperty(key)) continue;
     	var m = json[key];
@@ -20,9 +20,9 @@ function generateMonsterData(data, key) {
 	sprite.setAttribute('onclick', 'alert(JSON.stringify(' + JSON.stringify(data, null, 4) + ', null, 4))');
 	sprite.setAttribute('title', 'Click me for full monster data!');
 	td[1].appendChild(sprite);
-	td[2].innerHTML = data.hp;
-	td[3].innerHTML = data.xp;
-	td[4].innerHTML = data.attack;
+	td[2].innerHTML = ncomma(data.hp);
+	td[3].innerHTML = ncomma(data.xp);
+	td[4].innerHTML = ncomma(data.attack);
 	if (data.damage_type == "magical") {
 		td[4].className = 'magic';
 		td[4].setAttribute('title', 'Magic attack');
@@ -36,4 +36,8 @@ function generateMonsterData(data, key) {
 	td[5].className = 'mtype';
 	for (var i = 0; i < 6; i++) td[i] = tr.appendChild(td[i]);
 	t.appendChild(tr);
+}
+
+function ncomma(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

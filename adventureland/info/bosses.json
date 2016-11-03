@@ -30,30 +30,15 @@
   },
   "fvampire": {
     "hit": "explode_c",
-    "gold": 36000,
     "hp": 240000,
     "frequency": 1.2,
     "damage_type": "magical",
-    "xp": 300000,
+    "xp": 200000,
     "speed": 40,
     "name": "Ms. Dracul",
     "respawn": 1440,
     "range": 120,
-    "attack": 275,
-    "aggro": 0.05
-  },
-  "mrpumpkin": {
-    "hit": "explode_c",
-    "gold": 36000,
-    "hp": 120000,
-    "frequency": 1,
-    "damage_type": "magical",
-    "xp": 240000,
-    "speed": 40,
-    "name": "Mr. Pumpkin",
-    "respawn": 1440,
-    "range": 120,
-    "attack": 1200,
+    "attack": 675,
     "aggro": 0.05
   },
   "skeletor": {
