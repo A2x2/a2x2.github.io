@@ -15,3 +15,12 @@ function render(a) {
 		top: y
 	}).text(c).appendTo('body');
 }
+
+function change_font_size() {
+	let i = $('#fsize').val();
+	let s = /(\d+)/.exec(i)[1];
+	$('body').css({
+		fontFamily: 'sans-serif',
+		fontSize: `${s}px`
+	});
+}
