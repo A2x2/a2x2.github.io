@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-	background: url('assets/winter.png');
+	background: url('assets/winter.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-clip: border-box;
