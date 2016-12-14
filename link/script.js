@@ -1,9 +1,9 @@
 const input = $('#input-id');
 
-let identificators = {};
+let identifiers = {};
 
 $.getJSON("identifiers.json", function(json) {
-    identificators = json;
+    identifiers = json;
 });
 
 input.on('keypress', function (e) {
