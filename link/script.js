@@ -21,7 +21,7 @@ function check() {
 	let foundMatches = 0;
 	let results = '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> $N match found!</div><table class="table table-striped"><tr><th id="match-website">Website</th><th id="match-type">Linked Item</th><th>URL</th></tr>';
 	
-	for (let id of identificators) {
+	for (let id of identifiers) {
 		if (new RegExp(id.regex).test(value)) {
 			foundMatches++;
 			const link = id.url.replace('$URL', value);
