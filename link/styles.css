@@ -1,0 +1,21 @@
+body {
+	padding-top: 6rem;
+}
+
+#explanation {
+	padding-bottom: 10px;
+}
+
+#results {
+	padding-top: 1.5rem;
+}
+
+th#match-website {
+	position: relative;
+	width: 20%;
+}
+
+th#match-type {
+	position: relative;
+	width: 20%;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<title>URL Identifier</title>
+</head>
+<body>
+	<div class="container">
+		<div class="ui-content">
+			<h1 class="page-header">URL Identifier</h1>
+			<h4 id="explanation">Input something that might be an identificator here and we will try to match it with some ID patterns we know.</h4>
+
+			<div class="input-group input-group-lg">
+				<input type="text" class="form-control" id="input-id" placeholder="Identificator"></input>
+		    	<span class="input-group-btn">
+		    		<button class="btn btn-default" type="button" onclick="check()">Check!</button>
+		    	</span>
+		    </div>
+
+			<div id="results"></div>
+			<hr>
+			<p class="disclaimer"><strong>Disclaimer:</strong> This tool does not check whether any of the links are valid. It only searches for possible links based on the given identificator.
+			<p>Icons by <a href="http://glyphicons.com/">Glyphicons</a>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
