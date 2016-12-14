@@ -2,7 +2,7 @@ const input = $('#input-id');
 
 let identificators = {};
 
-$.getJSON("identificators.json", function(json) {
+$.getJSON("identifiers.json", function(json) {
     identificators = json;
 });
 
