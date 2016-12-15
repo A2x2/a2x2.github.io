@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="transition.min.js"></script>
+	<title>Simple Text Cryptoanalysis</title>
+</head>
+<body>
+	<div class="container">
+		<div class="ui-content">
+			<h1 class="page-header">Simple Text Cryptoanalysis</h1>
+			<h4 id="explanation">Run Atbash cipher, reverse text and all 25 variations of ROT.</h4>
+
+			<div class="input-group input-group-lg">
+				<input type="text" class="form-control" id="input-id" onkeypress="keypress(this, event)"></input>
+		    	<span class="input-group-btn">
+		    		<button class="btn btn-primary" type="button" onclick="check()">Go!</button>
+		    	</span>
+		    </div>
+
+			<div id="results"></div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

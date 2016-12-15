@@ -1,0 +1,21 @@
+body {
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+}
+
+#explanation {
+	padding-bottom: 1rem;
+}
+
+#results {
+	padding-top: 2rem;
+}
+
+th#cipher {
+	position: relative;
+	width: 15%;
+}
+
+td.result {
+	font-family: 'Monaco', monospace;
+}
