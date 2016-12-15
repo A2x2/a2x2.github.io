@@ -104,8 +104,8 @@
 	{
 		"name": ".onion",
 		"regex": "^[a-z0-9]{16}$",
-		"type": "Tor Link",
-		"url": "http://$URL.onion/ <strong>(Requires Tor)</strong>"
+		"type": "Tor Link (Requires Tor)",
+		"url": "http://$URL.onion/"
 	},
 	{
 		"name": "Facebook",
