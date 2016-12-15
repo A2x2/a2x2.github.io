@@ -43,7 +43,7 @@
 	},
 	{
 		"name": "Bitly",
-		"regex": "^[a-z0-9]{7}$",
+		"regex": "^[a-zA-Z0-9]{7}$",
 		"type": "Shortened Link",
 		"url": "https://bit.ly/$URL"
 	},
