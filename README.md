@@ -2,5 +2,5 @@
 *"Worst place on the internet"* -Kotaku
 
 ```javascript
-var reasons_to_live = [];
+let reasons_to_live = [];
 ```
