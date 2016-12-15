@@ -12,21 +12,21 @@
 		"url": "https://www.imgur.com/a/$URL"
 	},
 	{
-		"name": "Youtube",
+		"name": "YouTube",
 		"regex": "^[a-zA-Z0-9_-]{11}$",
 		"type": "Video",
 		"url": "https://youtu.be/$URL"
 	},
 	{
-		"name": "Youtube",
+		"name": "YouTube",
 		"regex": "^PLL[a-zA-Z0-9_-]{31}$",
 		"type": "Video Playlist",
 		"url": "https://www.youtube.com/playlist?list=$URL"
 	},
 	{
-		"name": "Youtube",
+		"name": "YouTube",
 		"regex": "^[a-zA-Z0-9_-]{24}$",
-		"type": "Youtube Channel",
+		"type": "YouTube Channel",
 		"url": "https://www.youtube.com/channel/$URL"
 	},
 	{
