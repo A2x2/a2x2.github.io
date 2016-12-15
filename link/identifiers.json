@@ -99,7 +99,7 @@
 		"name": "Vimeo",
 		"regex": "^\\d{9}$",
 		"type": "Video",
-		"url": "hhttps://vimeo.com/$URL"
+		"url": "https://vimeo.com/$URL"
 	},
 	{
 		"name": ".onion",
