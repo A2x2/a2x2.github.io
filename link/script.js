@@ -1,4 +1,5 @@
 const input = $('#input-id');
+const resultsDiv = $('#results');
 
 let identifiers = {};
 
@@ -11,10 +12,10 @@ input.on('keypress', function (e) {
 });
 
 function check() {
-	const value = encodeURIComponent(input.val());
+	const value = input.val();
 
 	if (value == '') {
-		$('#results').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Did you really expect a result without typing in anything?</div>');
+		resultsDiv.html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Did you really expect a result without typing in anything?</div>');
 		return;
 	}
 
@@ -28,7 +29,8 @@ function check() {
 			results += `<tr><td>${id.name}</td><td>${id.type}</td><td><a href="${link}">${link}</a></td></tr>`;
 		}
 	}
-	if (foundMatches > 1) $('#results').html(results.replace('match', 'matches').replace('$N', foundMatches));
-	else if (foundMatches == 1) $('#results').html(results.replace('$N', foundMatches));
-	else $('#results').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No matches found.</div>')
+	if (foundMatches > 1) resultsDiv.html(results.replace('match', 'matches').replace('$N', foundMatches));
+	else if (foundMatches == 1) resultsDiv.html(results.replace('$N', foundMatches));
+	else resultsDiv.html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No matches found.</div>')
+	transition.begin(resultsDiv[0], "opacity 0 1 250ms linear");
 }
