@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="js/identifiers.js"></script>
+	<script src="js/processors.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/transition.min.js"></script>
+	<title>Quick Decode</title>
+</head>
+<body>
+	<div class="container">
+		<div class="ui-content">
+			<h1 class="page-header">Quick Decode</h1>
+			<h4 id="explanation">Detects possible common encoding techniques and prints decoded output.</h4>
+
+			<div class="input-group input-group-lg">
+				<input type="text" class="form-control" id="input-id" placeholder="Encoded text" onkeypress="keypress(this, event)">
+		    	<span class="input-group-btn">
+		    		<button class="btn btn-primary" type="button" onclick="xlate()">Go!</button>
+		    	</span>
+		    </div>
+
+			<div id="results">
+			</div>
+			<hr>
+			<p>Tool by <strong>@A4#1889</strong>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>

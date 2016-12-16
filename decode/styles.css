@@ -1,0 +1,70 @@
+body {
+	padding-top: 6rem;
+}
+
+#explanation {
+	padding-bottom: 10px;
+}
+
+#results {
+	padding-top: 1rem;
+}
+
+span.red {
+	color: red;
+}
+
+input.form-control.char {
+	width: 5rem;
+}
+
+section.result-section {
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+	padding: 20px;
+	margin: 20px 0;
+	margin-bottom: 3rem;
+}
+
+section.result-section > h3 {
+	margin-top: 0;
+	font-weight: bold;
+	display: inline;
+}
+
+section.result-section > h5 {
+	margin-top: 0;
+	color: #999;
+	font-weight: bold;
+	display: inline;
+}
+
+/*
+
+section.result-section > h3 > span.glyphicon {
+	top: 3px;
+	opacity: 0.5;
+}
+
+a.section-tag {
+	padding: 5px 8px;
+	margin: 5px 3px;
+	background: #eee;
+	border-radius: 3px;
+	font-weight: bold;
+}
+
+a.section-tag:hover {
+	text-decoration: none;
+}
+
+*/
+
+.result-text {
+	padding: 1rem;
+	background: #eee;
+	font-family: 'Monaco', monospace;
+	display: block;
+	word-wrap: break-word;
+}
