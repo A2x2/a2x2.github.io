@@ -3,13 +3,13 @@
 		"name": "Imgur",
 		"regex": "^[a-zA-Z0-9]{7}$",
 		"type": "Image",
-		"url": "https://www.imgur.com/$URL"
+		"url": "https://imgur.com/$URL"
 	},
 	{
 		"name": "Imgur",
 		"regex": "^[a-zA-Z0-9]{5}$",
 		"type": "Image Album",
-		"url": "https://www.imgur.com/a/$URL"
+		"url": "https://imgur.com/a/$URL"
 	},
 	{
 		"name": "YouTube",
