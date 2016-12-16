@@ -22,7 +22,7 @@ function xlate() {
 			const r = window[id](value);
 			if (r) {
 				const inf = Data[id];
-				resultsHTML += `<section class="result-section" style="border-left-color: ${inf.colour}"><h3 style="color: ${inf.colour};">${inf.name}</h3><h5> 🡒 ${inf.type}</h5><p></p>${r}</section>`;
+				resultsHTML += `<section class="result-section" style="border-left-color: ${inf.colour}"><h3 style="color: ${inf.colour};">${inf.name}</h3><h5> → ${inf.type}</h5><p></p>${r}</section>`;
 			}
 		}
 	}
