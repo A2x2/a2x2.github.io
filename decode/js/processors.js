@@ -2,9 +2,9 @@ function hex(str) {
 	let res = '';
 	let formatted;
 
-	if (!/^([A-F0-9]{2} )*[A-F0-9]{2}$/.test(str)) {
+	if (!/^([A-F0-9]{2} )*[A-F0-9]{2}$/.test(str.trim())) {
 		formatted = str.toUpperCase().replace(/\s/g, '').replace(/(.{2})/g, '$1 ').trim();
-		res += `<label class="result-label">Formatted Input</label><span class="result-text">${formatted}</span><br>`;
+		res += render(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
@@ -13,7 +13,7 @@ function hex(str) {
 
 	if (invalid(output)) return null;
 
-	res += `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	res += render(output);
 	return res;
 }
 
@@ -23,7 +23,7 @@ function oct(str) {
 
 	if (!/^(\d{3}\s)+$/.test(str.trim() + ' ')) {
 		formatted = str.trim().split(' ').map(x => x.length == 3 ? x : '0' + x).join(' ');
-		res += `<label class="result-label">Formatted Input</label><span class="result-text">${formatted}</span><br>`;
+		res += render(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
@@ -32,7 +32,7 @@ function oct(str) {
 
 	if (invalid(output)) return null;
 
-	res += `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	res += render(output);
 	return res;
 }
 
@@ -42,7 +42,7 @@ function bin(str) {
 
 	if (!/^([0-1]{8}\s)+$/.test(str.trim() + ' ')) {
 		formatted = str.trim().replace(/\s/g, '').replace(/(.{8})/g, '$1 ').trim();
-		res += `<label class="result-label">Formatted Input</label><span class="result-text">${formatted}</span><br>`;
+		res += render(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
@@ -51,16 +51,14 @@ function bin(str) {
 
 	if (invalid(output)) return null;
 
-	res += `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	res += render(output);
 	return res;
 }
 
 function dec(str) {
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x))).join('');
-
 	if (invalid(output)) return null;
-
-	return `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	return render(output);
 }
 
 function base64(str) {
@@ -73,7 +71,7 @@ function base64(str) {
 	}
 	
 	if (invalid(output)) return null;
-	return `<label class="result-label">Result</label><span class="result-text">${output.replace(/\uFFFD/g, '')}</span>`;
+	return render(output.replace(/\uFFFD/g, ''));
 }
 
 function base32(str) {
@@ -110,7 +108,7 @@ function base32(str) {
 
 	if (invalid(output)) return null;
 
-	return `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	return render(output);
 }
 
 function ascii85(str) {
@@ -142,7 +140,7 @@ function ascii85(str) {
 
     if (invalid(output)) return null;
 
-	return `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	return render(output);
 };
 
 function alphabet(str) {
@@ -153,7 +151,7 @@ function alphabet(str) {
 
 	if (invalid(output)) return null;
 
-	return `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	return render(output);
 }
 
 function morse(str) {
@@ -170,9 +168,39 @@ function morse(str) {
 		}
 		if (words.indexOf(word) != words.length - 1) output += ' ';
 	}
-	return `<label class="result-label">Result</label><span class="result-text">${output}</span>`;
+	return render(output);
+}
+
+function nato(str) {
+	const natoAlph = ['Alpha', 'Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliet', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'Xray', 'X-ray', 'Yankee', 'Zulu', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Zero', 'Dash'];
+	const normalAlph = 'AABCDEFGHIJJKLMNOPQRSTUVWXXYZ1234567890-';
+
+	let [res, output, formatted] = ['', '', null];
+	
+	if (!/^([A-Z][a-z]{2,} )+$/.test(str.trim() + ' ')) {
+		formatted = str.toLowerCase().replace(/\w\S*/g, txt => (/space/i.test(txt)) ? txt : txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+		res += render(formatted, 'Formatted Input') + '<br>';
+	}
+
+	str = formatted ? formatted : str;
+
+	const words = str.trim().split(' ');
+
+	for (let word of words) {
+		if (!natoAlph.includes(word)) {
+			if (/space/i.test(word)) output += ' ';
+			else return null;
+		}
+		else output += normalAlph[natoAlph.indexOf(word)];
+	}
+	
+	return res + render(output);
 }
 
 function invalid(str) {
 	return /[^\w\s()\[\].;?!'"<>+=@#$%\^&*\|\\/\-_]/.test(str) || str.length == 0;
+}
+
+function render(content, title='Result') {
+	return `<label class="result-label">${title}</label><span class="result-text">${content}</span>`;
 }

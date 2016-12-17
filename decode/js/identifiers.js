@@ -25,5 +25,8 @@ const Identifiers = {
 	},
 	morse: str => {
 		return /^[.\-\/ ]+$/.test(str);
+	},
+	nato: str => {
+		return /^(\[?[A-Za-z]{3,}\]? )+$/.test(str.trim() + ' ');
 	}
 };

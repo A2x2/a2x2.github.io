@@ -11,7 +11,7 @@ const Data = {
 	},
 	dec: {
 		name: 'ASCII',
-		type: 'Character codes',
+		type: 'Character encoding standard',
 		colour: '#AB5BB7'
 	},
 	oct: {
@@ -44,4 +44,9 @@ const Data = {
 		type: 'Cipher',
 		colour: '#7D9646'
 	},
+	nato: {
+		name: 'NATO',
+		type: 'Phonetic Alphabet',
+		colour: '#73868E'
+	}
 }
