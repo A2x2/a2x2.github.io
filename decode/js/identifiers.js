@@ -33,6 +33,6 @@ const Identifiers = {
 		return /^(\[?[A-Za-z\-]{3,}\]? )+$/.test(str.trim() + ' ');
 	},
 	baconian: str => {
-		return /^[AB\s]+$/.test(str) && str.replace(' ', '').length % 5 == 0;
+		return /^[ABab\s]+$/.test(str) && str.replace(' ', '').length % 5 == 0;
 	}
 };

@@ -199,6 +199,14 @@ function nato(str) {
 
 function baconian(str) {
 	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	let res = '', formatted;
+
+	if (!/^[AB\s]+$/.test(str)) {
+		formatted = str.toUpperCase();
+		res += render(formatted, 'Formatted Input') + '<br>';
+	}
+
+	str = formatted ? formatted : str;
 	
 	const output = str.trim().split(' ').map(word => word.match(/.{5}/g).map(letter => {
 		let ix = 0;
@@ -206,7 +214,7 @@ function baconian(str) {
 		return alphabet[ix];
 	}).join('')).join(' ');
 	
-	return render(output);
+	return res + render(output);
 }
 
 function tapcode(str) {
