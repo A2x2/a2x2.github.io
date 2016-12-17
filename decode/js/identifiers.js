@@ -27,6 +27,6 @@ const Identifiers = {
 		return /^[.\-\/ ]+$/.test(str);
 	},
 	nato: str => {
-		return /^(\[?[A-Za-z]{3,}\]? )+$/.test(str.trim() + ' ');
+		return /^(\[?[A-Za-z\-]{3,}\]? )+$/.test(str.trim() + ' ');
 	}
 };
