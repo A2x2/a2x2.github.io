@@ -44,9 +44,19 @@ const Data = {
 		type: 'Cipher',
 		colour: '#7D9646'
 	},
+	tapcode: {
+		name: 'Tap Code',
+		type: 'Cipher',
+		colour: '#52AF73'
+	},
 	nato: {
 		name: 'NATO',
 		type: 'Phonetic Alphabet',
 		colour: '#73868E'
+	},
+	baconian: {
+		name: 'Baconian',
+		type: 'Cipher',
+		colour: '#B25A53'
 	}
 }

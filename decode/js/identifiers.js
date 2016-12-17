@@ -23,10 +23,16 @@ const Identifiers = {
 	ascii85: str => {
 		return !/\s/.test(str.trim());
 	},
+	tapcode: str => {
+		return /^[.\/\s]+$/.test(str) && str.trim().split(/ ?\/ ?| +/).length % 2 == 0;
+	},
 	morse: str => {
 		return /^[.\-\/ ]+$/.test(str);
 	},
 	nato: str => {
 		return /^(\[?[A-Za-z\-]{3,}\]? )+$/.test(str.trim() + ' ');
+	},
+	baconian: str => {
+		return /^[AB\s]+$/.test(str) && str.replace(' ', '').length % 5 == 0;
 	}
 };

@@ -68,3 +68,7 @@ a.section-tag:hover {
 	display: block;
 	word-wrap: break-word;
 }
+
+.section-informative {
+	color: #777;
+}

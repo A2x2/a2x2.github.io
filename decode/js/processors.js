@@ -197,10 +197,45 @@ function nato(str) {
 	return res + render(output);
 }
 
+function baconian(str) {
+	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	
+	const output = str.trim().split(' ').map(word => word.match(/.{5}/g).map(letter => {
+		let ix = 0;
+		for (let i = 0; i < 5; i++) ix += letter[i] == 'A' ? 0 : Math.pow(2, 4 - i);
+		return alphabet[ix];
+	}).join('')).join(' ');
+	
+	return render(output);
+}
+
+function tapcode(str) {
+	const alphabet = 'ABCDEFGHIJLMNOPQRSTUVWXYZ';
+	
+	const output = str.trim().split(/ *\/ */).map(word => {
+		const chars = word.split(/ +/);
+		let r = '';
+		for (let i = 0; i < chars.length - 1; i += 2) {
+			r += alphabet[(chars[i].length - 1) * 5 + chars[i + 1].length - 1];
+		}
+		return r;
+	}).join(' ');
+
+	let output_r = render(output);
+	if (output.includes('C')) output_r += info('"K" is replaced with "C" in tap code.');
+
+	return output_r;
+}
+
 function invalid(str) {
 	return /[^\w\s()\[\].;?!'"<>+=@#$%\^&*\|\\/\-_]/.test(str) || str.length == 0;
 }
 
 function render(content, title='Result') {
 	return `<label class="result-label">${title}</label><span class="result-text">${content}</span>`;
+}
+
+function info(content) {
+	return `<p><div class="section-informative"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	${content}</div>`;
 }
