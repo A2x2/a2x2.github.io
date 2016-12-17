@@ -236,7 +236,7 @@ function tapcode(str) {
 }
 
 function invalid(str) {
-	return /[^\w\s()\[\].,:;?!'"<>+=@#$%\^&*\|\\/\-_]/.test(str) || str.length == 0;
+	return /[^\w\s()\[\]{}.,:;`~?!'"<>+=@#$%\^&*\|\\/\-_]/.test(str) || str.length == 0;
 }
 
 function render(content, title='Result') {
