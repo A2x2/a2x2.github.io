@@ -177,7 +177,7 @@ function nato(str) {
 
 	let [res, output, formatted] = ['', '', null];
 	
-	if (!/^([A-Z][a-z]{2,} )+$/.test(str.trim() + ' ')) {
+	if (!/^([A-Z][a-z\-]{2,} )+$/.test(str.trim() + ' ')) {
 		formatted = str.toLowerCase().replace(/\w\S*/g, txt => (/space/i.test(txt)) ? txt : txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 		res += render(formatted, 'Formatted Input') + '<br>';
 	}
