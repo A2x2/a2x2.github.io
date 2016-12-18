@@ -75,35 +75,35 @@ function base64(str) {
 }
 
 function base32(str) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=";
+	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=";
 
-    let outputArray = [],
-        chr1, chr2, chr3, chr4, chr5,
-        enc1, enc2, enc3, enc4, enc5, enc6, enc7, enc8,
-        i = 0;
+	let outputArray = [],
+		chr1, chr2, chr3, chr4, chr5,
+		enc1, enc2, enc3, enc4, enc5, enc6, enc7, enc8,
+		i = 0;
 
-    while (i < str.length) {
-        enc1 = alphabet.indexOf(str[i++]);
-        enc2 = alphabet.indexOf(str[i++] || "=");
-        enc3 = alphabet.indexOf(str[i++] || "=");
-        enc4 = alphabet.indexOf(str[i++] || "=");
-        enc5 = alphabet.indexOf(str[i++] || "=");
-        enc6 = alphabet.indexOf(str[i++] || "=");
-        enc7 = alphabet.indexOf(str[i++] || "=");
-        enc8 = alphabet.indexOf(str[i++] || "=");
+	while (i < str.length) {
+		enc1 = alphabet.indexOf(str[i++]);
+		enc2 = alphabet.indexOf(str[i++] || "=");
+		enc3 = alphabet.indexOf(str[i++] || "=");
+		enc4 = alphabet.indexOf(str[i++] || "=");
+		enc5 = alphabet.indexOf(str[i++] || "=");
+		enc6 = alphabet.indexOf(str[i++] || "=");
+		enc7 = alphabet.indexOf(str[i++] || "=");
+		enc8 = alphabet.indexOf(str[i++] || "=");
 
-        chr1 = (enc1 << 3) | (enc2 >> 2);
-        chr2 = ((enc2 & 3) << 6) | (enc3 << 1) | (enc4 >> 4);
-        chr3 = ((enc4 & 15) << 4) | (enc5 >> 1);
-        chr4 = ((enc5 & 1) << 7) | (enc6 << 2) | (enc7 >> 3);
-        chr5 = ((enc7 & 7) << 5) | enc8;
+		chr1 = (enc1 << 3) | (enc2 >> 2);
+		chr2 = ((enc2 & 3) << 6) | (enc3 << 1) | (enc4 >> 4);
+		chr3 = ((enc4 & 15) << 4) | (enc5 >> 1);
+		chr4 = ((enc5 & 1) << 7) | (enc6 << 2) | (enc7 >> 3);
+		chr5 = ((enc7 & 7) << 5) | enc8;
 
-        outputArray.push(chr1);
-        if (enc2 & 3 !== 0 || enc3 !== 32) outputArray.push(chr2);
-        if (enc4 & 15 !== 0 || enc5 !== 32) outputArray.push(chr3);
-        if (enc5 & 1 !== 0 || enc6 !== 32) outputArray.push(chr4);
-        if (enc7 & 7 !== 0 || enc8 !== 32) outputArray.push(chr5);
-    }
+		outputArray.push(chr1);
+		if (enc2 & 3 !== 0 || enc3 !== 32) outputArray.push(chr2);
+		if (enc4 & 15 !== 0 || enc5 !== 32) outputArray.push(chr3);
+		if (enc5 & 1 !== 0 || enc6 !== 32) outputArray.push(chr4);
+		if (enc7 & 7 !== 0 || enc8 !== 32) outputArray.push(chr5);
+	}
 	const output = outputArray.map(x => String.fromCharCode(parseInt(x))).join('');
 
 	if (invalid(output)) return null;
@@ -113,32 +113,32 @@ function base32(str) {
 
 function ascii85(str) {
 	var _f = str.trim().replace(/(^<~)|(~>$)/g, '');
-    var n = _f.length, r = [], b = [0, 0, 0, 0, 0], i, j, t, x, y, d;
-    for (i = 0; i < n; ++i) {
-        if (_f.charAt(i) == "z") {
-            r.push(0, 0, 0, 0);
-            continue;
-        }
-        for (j = 0; j < 5; ++j) {
-            b[j] = _f.charCodeAt(i + j) - 33;
-        }
-        d = n - i;
-        if (d < 5) {
-            for (j = d; j < 4; b[++j] = 0) {}
-            b[d] = 85;
-        }
-        t = (((b[0] * 85 + b[1]) * 85 + b[2]) * 85 + b[3]) * 85 + b[4];
-        x = t & 255;
-        t >>>= 8;
-        y = t & 255;
-        t >>>= 8;
-        r.push(t >>> 8, t & 255, y, x);
-        for (j = d; j < 5; ++j, r.pop()) {}
-        i += 4;
-    }
-    const output = r.map(x => String.fromCharCode(parseInt(x))).join('');;
+	var n = _f.length, r = [], b = [0, 0, 0, 0, 0], i, j, t, x, y, d;
+	for (i = 0; i < n; ++i) {
+		if (_f.charAt(i) == "z") {
+			r.push(0, 0, 0, 0);
+			continue;
+		}
+		for (j = 0; j < 5; ++j) {
+			b[j] = _f.charCodeAt(i + j) - 33;
+		}
+		d = n - i;
+		if (d < 5) {
+			for (j = d; j < 4; b[++j] = 0) {}
+			b[d] = 85;
+		}
+		t = (((b[0] * 85 + b[1]) * 85 + b[2]) * 85 + b[3]) * 85 + b[4];
+		x = t & 255;
+		t >>>= 8;
+		y = t & 255;
+		t >>>= 8;
+		r.push(t >>> 8, t & 255, y, x);
+		for (j = d; j < 5; ++j, r.pop()) {}
+		i += 4;
+	}
+	const output = r.map(x => String.fromCharCode(parseInt(x))).join('');;
 
-    if (invalid(output)) return null;
+	if (invalid(output)) return null;
 
 	return render(output);
 };
