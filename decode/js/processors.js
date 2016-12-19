@@ -1,64 +1,54 @@
 function hex(str) {
-	let res = '';
+	let formattedHTML;
 	let formatted;
 
 	if (!/^([A-F0-9]{2} )*[A-F0-9]{2}$/.test(str.trim())) {
 		formatted = str.toUpperCase().replace(/\s/g, '').replace(/(.{2})/g, '$1 ').trim();
-		res += render(formatted, 'Formatted Input') + '<br>';
+		formattedHTML = render_text(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
 
 	const output = str.split(' ').map(x => String.fromCharCode(parseInt(x, 16))).join('');
 
-	if (invalid(output)) return null;
-
-	res += render(output);
-	return res;
+	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function oct(str) {
-	let res = '';
+	let formattedHTML;
 	let formatted;
 
 	if (!/^(\d{3}\s)+$/.test(str.trim() + ' ')) {
 		formatted = str.trim().split(' ').map(x => x.length == 3 ? x : '0' + x).join(' ');
-		res += render(formatted, 'Formatted Input') + '<br>';
+		formattedHTML = render_text(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
 
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x, 8))).join('');
 
-	if (invalid(output)) return null;
-
-	res += render(output);
-	return res;
+	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function bin(str) {
-	let res = '';
+	let formattedHTML;
 	let formatted;
 
 	if (!/^([0-1]{8}\s)+$/.test(str.trim() + ' ')) {
 		formatted = str.trim().replace(/\s/g, '').replace(/(.{8})/g, '$1 ').trim();
-		res += render(formatted, 'Formatted Input') + '<br>';
+		formattedHTML = render_text(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
 
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x, 2))).join('');
 
-	if (invalid(output)) return null;
-
-	res += render(output);
-	return res;
+	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function dec(str) {
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x))).join('');
-	if (invalid(output)) return null;
-	return render(output);
+	return render_section(str, output, {'error_check': true});
 }
 
 function base64(str) {
@@ -70,8 +60,7 @@ function base64(str) {
 		return null;
 	}
 	
-	if (invalid(output)) return null;
-	return render(output.replace(/\uFFFD/g, ''));
+	return render_section(str, output.replace(/\uFFFD/g, ''));
 }
 
 function base32(str) {
@@ -106,9 +95,7 @@ function base32(str) {
 	}
 	const output = outputArray.map(x => String.fromCharCode(parseInt(x))).join('');
 
-	if (invalid(output)) return null;
-
-	return render(output);
+	return render_section(str, output);
 }
 
 function ascii85(str) {
@@ -138,9 +125,7 @@ function ascii85(str) {
 	}
 	const output = r.map(x => String.fromCharCode(parseInt(x))).join('');;
 
-	if (invalid(output)) return null;
-
-	return render(output);
+	return render_section(str, output);
 };
 
 function alphabet(str) {
@@ -149,37 +134,46 @@ function alphabet(str) {
 	if (str.includes('-')) output = str.trim().split(' ').map(word => word.split('-').map(ch => String.fromCharCode(parseInt(ch) + 64)).join('')).join(' ');
 	else output = str.trim().split(' ').map(ch => String.fromCharCode(parseInt(ch) + 64)).join('');
 
-	if (invalid(output)) return null;
-
-	return render(output);
+	return render_section(str, output);
 }
 
 function morse(str) {
 	const morseAlph = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.', '-----'];
 	const normalAlph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
+	let input = '';
 	let output = '';
+	const errorchar = '�';
 	const words = str.trim().split(/ ?\/ ?/)
 
 	for (let word of words) {
 		for (let letter of word.split(' ')) {
-			if (!morseAlph.includes(letter)) return null;
-			output += normalAlph[morseAlph.indexOf(letter)];
+			output += morseAlph.includes(letter) ? normalAlph[morseAlph.indexOf(letter)] : `<span class="red">${errorchar}</span>`;
+			input += morseAlph.includes(letter) ? letter + ' ' : `<span class="red underline">${letter}</span> `;
 		}
-		if (words.indexOf(word) != words.length - 1) output += ' ';
+
+		if (words.indexOf(word) != words.length - 1) {
+			input += '/ ';
+			output += ' ';
+		}
 	}
-	return render(output);
+
+	if (output.includes(errorchar) && (output.match(new RegExp(errorchar, 'g')) || []).length / output.length < 0.4) {
+		return render_text(input, 'Error(s) in Input') + '<br>' + render_text(output);
+	}
+
+	return render_text(output);
 }
 
 function nato(str) {
 	const natoAlph = ['Alpha', 'Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliet', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'Xray', 'X-ray', 'Yankee', 'Zulu', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Zero', 'Dash'];
 	const normalAlph = 'AABCDEFGHIJJKLMNOPQRSTUVWXXYZ1234567890-';
 
-	let [res, output, formatted] = ['', '', null];
+	let [output, formatted, formattedHTML] = ['', null, ''];
 	
 	if (!/^([A-Z][a-z\-]{2,} )+$/.test(str.trim() + ' ')) {
 		formatted = str.toLowerCase().replace(/\w\S*/g, txt => (/space/i.test(txt)) ? txt : txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-		res += render(formatted, 'Formatted Input') + '<br>';
+		formattedHTML = render_text(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
@@ -194,16 +188,16 @@ function nato(str) {
 		else output += normalAlph[natoAlph.indexOf(word)];
 	}
 	
-	return res + render(output);
+	return render_section(str, output, {'html_before': formattedHTML});
 }
 
 function baconian(str) {
 	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	let res = '', formatted;
+	let formattedHTML = '', formatted;
 
 	if (!/^[AB\s]+$/.test(str)) {
 		formatted = str.toUpperCase();
-		res += render(formatted, 'Formatted Input') + '<br>';
+		formattedHTML = render_text(formatted, 'Formatted Input') + '<br>';
 	}
 
 	str = formatted ? formatted : str;
@@ -214,7 +208,7 @@ function baconian(str) {
 		return alphabet[ix];
 	}).join('')).join(' ');
 	
-	return res + render(output);
+	return render_section(str, output, {'html_before': formattedHTML});
 }
 
 function tapcode(str) {
@@ -229,18 +223,45 @@ function tapcode(str) {
 		return r;
 	}).join(' ');
 
-	let output_r = render(output);
+	let output_r = render_text(output);
 	if (output.includes('C')) output_r += info('"K" is replaced with "C" in tap code.');
 
 	return output_r;
 }
 
-function invalid(str) {
+function invalid(str, returnInvalidity = false) {
+	if (returnInvalidity) {
+		const errors = str.match(/[^\w\s()\[\]{}.,:;`~?!'"<>+=@#$%\^&*\|\\/\-_]/g);
+		const errorThreshold = 0.15;
+		if (!errors) return false;
+		if (errors.length / str.length < errorThreshold) {
+			return {'error': errors};
+		} else return true;
+	}
 	return /[^\w\s()\[\]{}.,:;`~?!'"<>+=@#$%\^&*\|\\/\-_]/.test(str) || str.length == 0;
 }
 
-function render(content, title='Result') {
+function render_with_error(output, errors) {
+	const errorchar = '�';
+	for (let error of errors) {
+		output = output.replace(error, `<span class="red">${errorchar}</span>`);
+	}
+	return render_text(output);
+}
+
+function render_text(content, title='Result') {
 	return `<label class="result-label">${title}</label><span class="result-text">${content}</span>`;
+}
+
+function render_section(input, output, args) {
+	args = args || {};
+
+	let res = args.html_before || '';
+
+	const invalidity = invalid(output, args.error_check || false);
+
+	if (invalidity) return invalidity.error ? render_with_error(output, invalidity.error) : null;
+	else return res + render_text(output);
 }
 
 function info(content) {

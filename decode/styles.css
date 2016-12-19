@@ -11,7 +11,11 @@ body {
 }
 
 span.red {
-	color: red;
+	color: #CE4844;
+}
+
+span.red.underline {
+	text-decoration: underline;
 }
 
 input.form-control.char {
