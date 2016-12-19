@@ -1,3 +1,5 @@
+let invalidAlerted = false;
+
 function hex(str) {
 	let formattedHTML;
 	let formatted;
@@ -243,7 +245,10 @@ function render_with_error(output, errors) {
 	for (let error of errors) {
 		output = output.replace(error, `<span class="red">${errorchar}</span>`);
 	}
-	return render_text(output);
+	if (!invalidAlerted) {
+		invalidAlerted = true;
+		return render_text(output) + info('This output contains one or more invalid characters. A valid result will only appear on input if less than 15% of the output characters are invalid.');
+	} else return render_text(output);
 }
 
 function render_text(content, title='Result') {
