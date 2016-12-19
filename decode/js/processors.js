@@ -247,7 +247,7 @@ function render_with_error(output, errors) {
 	}
 	if (!invalidAlerted) {
 		invalidAlerted = true;
-		return render_text(output) + info('This output contains one or more invalid characters. A valid result will only appear on input if less than 15% of the output characters are invalid.');
+		return render_text(output) + info('This output contains one or more invalid characters. Results will only appear if at least 85% of the output is valid.');
 	} else return render_text(output);
 }
 
