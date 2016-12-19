@@ -24,7 +24,7 @@ const Identifiers = {
 		return !/\s/.test(str.trim());
 	},
 	tapcode: str => {
-		return /^[.\/\s]+$/.test(str) && str.trim().split(/ ?\/ ?| +/).length % 2 == 0;
+		return /^(\.{1,5}[ \/]+)+$/.test(str + ' ') && str.trim().split(/ ?\/ ?| +/).length % 2 == 0;
 	},
 	morse: str => {
 		return /^[.\-\/ ]+$/.test(str);

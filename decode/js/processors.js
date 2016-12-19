@@ -141,15 +141,15 @@ function morse(str) {
 	const morseAlph = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.', '-----'];
 	const normalAlph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
-	let input = '';
-	let output = '';
+	let [input, output] = ['', ''];
 	const errorchar = '�';
 	const words = str.trim().split(/ ?\/ ?/)
 
 	for (let word of words) {
 		for (let letter of word.split(' ')) {
-			output += morseAlph.includes(letter) ? normalAlph[morseAlph.indexOf(letter)] : `<span class="red">${errorchar}</span>`;
-			input += morseAlph.includes(letter) ? letter + ' ' : `<span class="red underline">${letter}</span> `;
+			const inc = morseAlph.includes(letter);
+			output += inc ? normalAlph[morseAlph.indexOf(letter)] : `<span class="red">${errorchar}</span>`;
+			input += inc ? letter + ' ' : `<span class="red underline">${letter}</span> `;
 		}
 
 		if (words.indexOf(word) != words.length - 1) {
@@ -158,10 +158,7 @@ function morse(str) {
 		}
 	}
 
-	if (output.includes(errorchar) && (output.match(new RegExp(errorchar, 'g')) || []).length / output.length < 0.4) {
-		return render_text(input, 'Error(s) in Input') + '<br>' + render_text(output);
-	}
-
+	if (output.includes(errorchar)) return render_text(input.trim(), 'Error(s) in Input') + '<br>' + render_text(output);
 	return render_text(output);
 }
 
