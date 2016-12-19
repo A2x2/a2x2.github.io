@@ -11,7 +11,7 @@ function hex(str) {
 
 	const output = str.split(' ').map(x => String.fromCharCode(parseInt(x, 16))).join('');
 
-	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
+	return render_section(output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function oct(str) {
@@ -27,7 +27,7 @@ function oct(str) {
 
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x, 8))).join('');
 
-	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
+	return render_section(output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function bin(str) {
@@ -43,12 +43,12 @@ function bin(str) {
 
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x, 2))).join('');
 
-	return render_section(str, output, {'error_check': true, 'html_before': formattedHTML});
+	return render_section(output, {'error_check': true, 'html_before': formattedHTML});
 }
 
 function dec(str) {
 	const output = str.trim().split(' ').map(x => String.fromCharCode(parseInt(x))).join('');
-	return render_section(str, output, {'error_check': true});
+	return render_section(output, {'error_check': true});
 }
 
 function base64(str) {
@@ -60,7 +60,7 @@ function base64(str) {
 		return null;
 	}
 	
-	return render_section(str, output.replace(/\uFFFD/g, ''));
+	return render_section(output.replace(/\uFFFD/g, ''));
 }
 
 function base32(str) {
@@ -95,7 +95,7 @@ function base32(str) {
 	}
 	const output = outputArray.map(x => String.fromCharCode(parseInt(x))).join('');
 
-	return render_section(str, output);
+	return render_section(output);
 }
 
 function ascii85(str) {
@@ -125,7 +125,7 @@ function ascii85(str) {
 	}
 	const output = r.map(x => String.fromCharCode(parseInt(x))).join('');;
 
-	return render_section(str, output);
+	return render_section(output);
 };
 
 function alphabet(str) {
@@ -134,7 +134,7 @@ function alphabet(str) {
 	if (str.includes('-')) output = str.trim().split(' ').map(word => word.split('-').map(ch => String.fromCharCode(parseInt(ch) + 64)).join('')).join(' ');
 	else output = str.trim().split(' ').map(ch => String.fromCharCode(parseInt(ch) + 64)).join('');
 
-	return render_section(str, output);
+	return render_section(output);
 }
 
 function morse(str) {
@@ -185,7 +185,7 @@ function nato(str) {
 		else output += normalAlph[natoAlph.indexOf(word)];
 	}
 	
-	return render_section(str, output, {'html_before': formattedHTML});
+	return render_section(output, {'html_before': formattedHTML});
 }
 
 function baconian(str) {
@@ -205,7 +205,7 @@ function baconian(str) {
 		return alphabet[ix];
 	}).join('')).join(' ');
 	
-	return render_section(str, output, {'html_before': formattedHTML});
+	return render_section(output, {'html_before': formattedHTML});
 }
 
 function tapcode(str) {
@@ -250,15 +250,15 @@ function render_text(content, title='Result') {
 	return `<label class="result-label">${title}</label><span class="result-text">${content}</span>`;
 }
 
-function render_section(input, output, args) {
+function render_section(content, args) {
 	args = args || {};
 
 	let res = args.html_before || '';
 
-	const invalidity = invalid(output, args.error_check || false);
+	const invalidity = invalid(content, args.error_check || false);
 
-	if (invalidity) return invalidity.error ? render_with_error(output, invalidity.error) : null;
-	else return res + render_text(output);
+	if (invalidity) return invalidity.error ? res + render_with_error(content, invalidity.error) : null;
+	else return res + render_text(content);
 }
 
 function info(content) {
